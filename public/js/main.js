@@ -160,6 +160,24 @@
     [nameInput, messengerInput, taskInput].filter(Boolean).forEach(function (el) {
       el.addEventListener('input', function () { clearError(el); });
     });
+
+    function validateField(input) {
+      if (!input) return true;
+      var msg = '';
+      if (input === nameInput && nameInput.value.trim().length === 0) msg = 'Name is required';
+      else if (input === messengerInput && messengerInput.value.trim().length === 0) msg = 'Telegram or WhatsApp is required';
+      else if (input === taskInput && taskInput.value.trim().length === 0) msg = 'Please describe your task';
+      if (msg) {
+        showError(input, msg);
+        return false;
+      }
+      clearError(input);
+      return true;
+    }
+
+    [nameInput, messengerInput, taskInput].filter(Boolean).forEach(function (el) {
+      el.addEventListener('blur', function () { validateField(el); });
+    });
   }
 
   /* 5.4 Solutions Filter + 5.5 Modal */
