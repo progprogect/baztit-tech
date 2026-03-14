@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
   <header>
     <nav aria-label="Main navigation">
       <a href="/">Baztit Tech</a>
@@ -32,7 +34,7 @@
   <main>
     <section id="hero" aria-label="Hero">
       <div class="hero-content">
-        <p class="section-tag">● 50+ completed projects · 10+ years of real IT experience</p>
+        <p class="section-tag reveal">● 50+ completed projects · 10+ years of real IT experience</p>
         <h1>We automate your business in 1–2 weeks for under $1,000</h1>
         <p class="hero-subheadline"></p>
         <div class="hero-cta">
@@ -50,65 +52,90 @@
     </section>
 
     <section id="ticker" class="ticker-wrap" aria-hidden="true">
-      <div class="ticker-track">CUSTOM SOFTWARE · NO SUBSCRIPTIONS · PROTOTYPE FIRST · PAY AFTER · 10+ YEARS IN IT · 50+ PROJECTS SHIPPED · RAILWAY HOSTED · FROM $300 ·</div>
+      <div class="ticker-track">CUSTOM SOFTWARE · NO SUBSCRIPTIONS · PROTOTYPE FIRST · PAY AFTER · 10+ YEARS IN IT · 50+ PROJECTS SHIPPED · RAILWAY HOSTED · FROM $300 · CUSTOM SOFTWARE · NO SUBSCRIPTIONS · PROTOTYPE FIRST · PAY AFTER · 10+ YEARS IN IT · 50+ PROJECTS SHIPPED · RAILWAY HOSTED · FROM $300 ·</div>
     </section>
 
     <section id="pain" aria-labelledby="pain-heading">
-      <p class="section-tag">// the problem</p>
-      <h2 id="pain-heading">You've probably been here before</h2>
-      <div class="pain-grid"></div>
+      <p class="section-tag reveal">// the problem</p>
+      <h2 id="pain-heading" class="reveal">You've probably been here before</h2>
+      <div class="pain-grid reveal-stagger"></div>
     </section>
 
     <section id="about" aria-labelledby="about-heading">
-      <p class="section-tag">// why we're different</p>
-      <h2 id="about-heading">We're not beginners who learned AI last month.</h2>
-      <div class="about-content"></div>
+      <p class="section-tag reveal">// why we're different</p>
+      <h2 id="about-heading" class="reveal">We're not beginners who learned AI last month.</h2>
+      <div class="about-content">
+        <div class="bar" data-width="95"><span class="bar-label">Architecture & Systems</span><span class="bar-fill"></span><span class="bar-pct">95%</span></div>
+        <div class="bar" data-width="90"><span class="bar-label">AI & Automation</span><span class="bar-fill"></span><span class="bar-pct">90%</span></div>
+        <div class="bar" data-width="88"><span class="bar-label">Delivery Speed</span><span class="bar-fill"></span><span class="bar-pct">88%</span></div>
+      </div>
     </section>
 
     <section id="how-we-work" aria-labelledby="how-heading">
-      <p class="section-tag">// the process</p>
-      <h2 id="how-heading">We show first. You pay after.</h2>
-      <div class="steps"></div>
+      <p class="section-tag reveal">// the process</p>
+      <h2 id="how-heading" class="reveal">We show first. You pay after.</h2>
+      <div class="steps reveal-stagger"></div>
     </section>
 
     <section id="cases" class="cases-section" aria-labelledby="cases-heading">
-      <p class="section-tag">// real work</p>
-      <h2 id="cases-heading">What we've built — and why it works</h2>
-      <div class="cases-track"></div>
+      <p class="section-tag reveal">// real work</p>
+      <h2 id="cases-heading" class="reveal">What we've built — and why it works</h2>
+      <div class="cases-track">
+        <div class="case-card glass-card">
+          <h3>AI Agent for Sales & Recruiting</h3>
+          <p>Digital employee — qualifies leads, pushes to CRM. <a href="https://progprogect.github.io/AI-Agents-CRM-LP" target="_blank" rel="noopener">View case →</a></p>
+        </div>
+        <div class="case-card glass-card">
+          <h3>Production & Warehouse Tracking</h3>
+          <p>Cost $2,000 · 2 weeks · Competing quotes: $50,000+</p>
+        </div>
+        <div class="case-card glass-card">
+          <h3>CRM for Trade & Delivery (CIS)</h3>
+          <p>$300 one-time. No monthly fees.</p>
+        </div>
+        <div class="case-card glass-card">
+          <h3>McDonald's Queue Analytics</h3>
+          <p>Computer vision, ML, video analytics</p>
+        </div>
+        <div class="case-card glass-card">
+          <h3>Huawei Video ML</h3>
+          <p>Predictive smoothing, reduced latency</p>
+        </div>
+      </div>
     </section>
 
     <section id="what-we-build" aria-labelledby="build-heading">
-      <p class="section-tag">// what we build</p>
-      <h2 id="build-heading">Three ways we can help</h2>
-      <div class="bento-grid"></div>
+      <p class="section-tag reveal">// what we build</p>
+      <h2 id="build-heading" class="reveal">Three ways we can help</h2>
+      <div class="bento-grid reveal-stagger"></div>
     </section>
 
     <section id="solutions-preview" aria-labelledby="solutions-heading">
-      <p class="section-tag">// ready to ship</p>
-      <h2 id="solutions-heading">Already built — take it and use it</h2>
-      <div class="solutions-grid"></div>
+      <p class="section-tag reveal">// ready to ship</p>
+      <h2 id="solutions-heading" class="reveal">Already built — take it and use it</h2>
+      <div class="solutions-grid reveal-stagger"></div>
     </section>
 
     <section id="team" aria-labelledby="team-heading">
-      <p class="section-tag">// the team</p>
-      <h2 id="team-heading">Who's behind this</h2>
-      <div class="team-grid"></div>
+      <p class="section-tag reveal">// the team</p>
+      <h2 id="team-heading" class="reveal">Who's behind this</h2>
+      <div class="team-grid reveal-stagger"></div>
     </section>
 
     <section id="offer" aria-labelledby="offer-heading">
-      <p class="section-tag">// our promise</p>
-      <h2 id="offer-heading">Try it risk-free — first prototype is on us</h2>
+      <p class="section-tag reveal">// our promise</p>
+      <h2 id="offer-heading" class="reveal">Try it risk-free — first prototype is on us</h2>
       <div class="offer-content"></div>
     </section>
 
     <section id="comparison" aria-labelledby="comparison-heading">
-      <h2 id="comparison-heading">Baztit Tech vs Traditional Agencies</h2>
+      <h2 id="comparison-heading" class="reveal">Baztit Tech vs Traditional Agencies</h2>
       <div class="comparison-table"></div>
     </section>
 
     <section id="contact" aria-labelledby="contact-heading">
-      <p class="section-tag">// let's talk</p>
-      <h2 id="contact-heading">Tell us your task — we'll show you the prototype</h2>
+      <p class="section-tag reveal">// let's talk</p>
+      <h2 id="contact-heading" class="reveal">Tell us your task — we'll show you the prototype</h2>
       <form class="contact-form" action="#" method="POST" aria-label="Contact form">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Alex" required aria-required="true">
@@ -144,8 +171,9 @@
     <p>© 2026 Baztit Tech · All rights reserved</p>
   </footer>
 
-  <!-- Scripts: Three.js → GSAP → ScrollTrigger → Lenis → main -->
+  <!-- Scripts: Three.js → three-scene → GSAP → ScrollTrigger → Lenis → main -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="/js/three-scene.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
