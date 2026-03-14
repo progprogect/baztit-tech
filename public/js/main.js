@@ -51,6 +51,117 @@
   }
   document.addEventListener('click', scrollToHash, true);
 
+  /* 4.1 NAV — scroll class + hamburger */
+  const header = document.getElementById('header');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (header) {
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('is-open', !expanded);
+    });
+    navMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('is-open');
+      });
+    });
+  }
+
+  /* 4.13 Contact Form — validation, loading, success */
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    const nameInput = document.getElementById('name');
+    const messengerInput = document.getElementById('messenger');
+    const taskInput = document.getElementById('task');
+    const submitBtn = document.getElementById('form-submit');
+    const successEl = document.getElementById('form-success');
+
+    function showError(input, msg) {
+      const id = input.id + '-error';
+      const err = document.getElementById(id);
+      if (err) {
+        err.textContent = msg;
+        input.setAttribute('aria-invalid', 'true');
+      }
+    }
+
+    function clearError(input) {
+      const id = input.id + '-error';
+      const err = document.getElementById(id);
+      if (err) {
+        err.textContent = '';
+        input.setAttribute('aria-invalid', 'false');
+      }
+    }
+
+    function validate() {
+      var valid = true;
+      if (nameInput && nameInput.value.trim().length === 0) {
+        showError(nameInput, 'Name is required');
+        valid = false;
+      } else if (nameInput) clearError(nameInput);
+      if (messengerInput && messengerInput.value.trim().length === 0) {
+        showError(messengerInput, 'Telegram or WhatsApp is required');
+        valid = false;
+      } else if (messengerInput) clearError(messengerInput);
+      if (taskInput && taskInput.value.trim().length === 0) {
+        showError(taskInput, 'Please describe your task');
+        valid = false;
+      } else if (taskInput) clearError(taskInput);
+      return valid;
+    }
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validate()) return;
+
+      if (submitBtn) {
+        submitBtn.classList.add('is-loading');
+        submitBtn.disabled = true;
+      }
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (res) {
+          if (res.ok) {
+            contactForm.reset();
+            if (successEl) {
+              successEl.hidden = false;
+            }
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(function () {
+          if (messengerInput) showError(messengerInput, 'Something went wrong. Try Telegram: @volknick');
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.classList.remove('is-loading');
+            submitBtn.disabled = false;
+          }
+        });
+    });
+
+    [nameInput, messengerInput, taskInput].filter(Boolean).forEach(function (el) {
+      el.addEventListener('input', function () { clearError(el); });
+    });
+  }
+
   if (reducedMotion) return;
 
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;

@@ -18,16 +18,21 @@
 <body>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
-  <header>
-    <nav aria-label="Main navigation">
-      <a href="/">Baztit Tech</a>
-      <a href="#how-we-work">How We Work</a>
-      <a href="#cases">Experience</a>
-      <a href="#what-we-build">What We Build</a>
-      <a href="/solutions">Solutions</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn-primary">Get a Free Prototype</a>
+  <header id="header">
+    <nav aria-label="Main navigation" class="nav-inner">
+      <a href="/" class="nav-logo">Baztit Tech</a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu">
+        <a href="#how-we-work">How We Work</a>
+        <a href="#cases">Experience</a>
+        <a href="#what-we-build">What We Build</a>
+        <a href="/solutions">Solutions</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-primary">Get a Free Prototype</a>
+      </div>
     </nav>
   </header>
 
@@ -58,23 +63,96 @@
     <section id="pain" aria-labelledby="pain-heading">
       <p class="section-tag reveal">// the problem</p>
       <h2 id="pain-heading" class="reveal">You've probably been here before</h2>
-      <div class="pain-grid reveal-stagger"></div>
+      <div class="pain-grid grid-3 reveal-stagger">
+        <div class="glass-card pain-card">
+          <span class="pain-icon">💸</span>
+          <h3>Agencies charge like it's rocket science</h3>
+          <p>You asked for a quote. You got a $15,000 proposal and a 4-month timeline. For one workflow tool. With no guarantee it'll even fit how you work.</p>
+        </div>
+        <div class="glass-card pain-card">
+          <span class="pain-icon">🔁</span>
+          <h3>Paying subscriptions for tools that don't fit</h3>
+          <p>Bitrix, Zapier, Monday, HubSpot — paying monthly, using 10% of the features. The one thing you actually need? Missing.</p>
+        </div>
+        <div class="glass-card pain-card">
+          <span class="pain-icon">🧩</span>
+          <h3>The tool you need simply doesn't exist</h3>
+          <p>You've searched. Nothing fits your process. Every existing solution is too generic, too rigid, or too expensive to adapt.</p>
+        </div>
+        <div class="glass-card pain-card">
+          <span class="pain-icon">⏱️</span>
+          <h3>Routine is destroying your team's focus</h3>
+          <p>Managers copy data between systems, build Excel reports by hand, answer the same questions 20 times a day. That's not their job — that's lost revenue.</p>
+        </div>
+        <div class="glass-card pain-card">
+          <span class="pain-icon">🤖</span>
+          <h3>You tried AI automation — it was terrible</h3>
+          <p>Someone said they do AI development. The result broke under load, couldn't handle edge cases, and was basically a chatbot with a nice UI. You got burned.</p>
+        </div>
+        <div class="glass-card pain-card">
+          <span class="pain-icon">🔌</span>
+          <h3>Your systems don't talk to each other</h3>
+          <p>Website, CRM, warehouse, payments — all separate islands. Data copied manually. Errors, duplicates, clients lost.</p>
+        </div>
+      </div>
     </section>
 
     <section id="about" aria-labelledby="about-heading">
       <p class="section-tag reveal">// why we're different</p>
-      <h2 id="about-heading" class="reveal">We're not beginners who learned AI last month.</h2>
-      <div class="about-content">
-        <div class="bar" data-width="95"><span class="bar-label">Architecture & Systems</span><span class="bar-fill"></span><span class="bar-pct">95%</span></div>
-        <div class="bar" data-width="90"><span class="bar-label">AI & Automation</span><span class="bar-fill"></span><span class="bar-pct">90%</span></div>
-        <div class="bar" data-width="88"><span class="bar-label">Delivery Speed</span><span class="bar-fill"></span><span class="bar-pct">88%</span></div>
+      <h2 id="about-heading" class="reveal">We're not beginners who learned AI last month. We built complex systems before ChatGPT existed.</h2>
+      <div class="about-content grid-2">
+        <div class="about-text">
+          <p class="reveal">Baztit Tech is a small team of engineers with real production experience. Our technical lead Nikita has 11+ years as CTO and tech lead — building everything from corporate websites to distributed ERP platforms. That's 20,000+ hours of actual development work.</p>
+          <p class="reveal">We use AI as an acceleration layer — not a replacement for engineering judgment. Architecture, code review, and reliability testing are done by us. That's why our systems work under real load and don't collapse in production — unlike products churned out by people who completed a 30-day AI course.</p>
+          <p class="reveal">Our portfolio includes projects for McDonald's (computer vision queue analytics), Huawei (ML video smoothing), medical FHIR data platforms, ERP systems, and AI-powered sales agents. We know what it takes to ship something that actually works.</p>
+          <ul class="about-differentiators reveal">
+            <li><span class="diff-icon">⚙️</span> <strong>AI is our tool, not our crutch</strong> — Architecture and code review always done by humans</li>
+            <li><span class="diff-icon">📦</span> <strong>50+ shipped projects</strong> — From mobile apps to computer vision pipelines</li>
+            <li><span class="diff-icon">💬</span> <strong>Small team = you talk to builders</strong> — No account managers, no bureaucracy</li>
+            <li><span class="diff-icon">💰</span> <strong>SMB-affordable pricing</strong> — What used to cost $50k now costs $300–1,000</li>
+          </ul>
+        </div>
+        <div class="about-bars">
+          <div class="bar" data-width="95"><span class="bar-label">Architecture & Systems</span><span class="bar-fill"></span><span class="bar-pct">95%</span></div>
+          <div class="bar" data-width="90"><span class="bar-label">AI & Automation</span><span class="bar-fill"></span><span class="bar-pct">90%</span></div>
+          <div class="bar" data-width="88"><span class="bar-label">Delivery Speed</span><span class="bar-fill"></span><span class="bar-pct">88%</span></div>
+        </div>
       </div>
     </section>
 
     <section id="how-we-work" aria-labelledby="how-heading">
       <p class="section-tag reveal">// the process</p>
       <h2 id="how-heading" class="reveal">We show first. You pay after.</h2>
-      <div class="steps reveal-stagger"></div>
+      <p class="how-subheadline reveal">No upfront payment. No risk. You only pay when you've seen it working and said yes.</p>
+      <div class="steps reveal-stagger">
+        <div class="step glass-card">
+          <span class="step-num">01</span>
+          <span class="badge badge-free step-badge">FREE</span>
+          <h3>Tell us your task</h3>
+          <p>30-minute Telegram chat or call. You describe what you want to automate or what tool you need. We ask questions and propose a solution. No 20-page proposals.</p>
+        </div>
+        <div class="step glass-card">
+          <span class="step-num">02</span>
+          <span class="badge badge-free step-badge">FREE</span>
+          <h3>We build a prototype in 7–14 days</h3>
+          <p>A working prototype — not a presentation, not a mockup. An actual working version you can test with your real data.</p>
+        </div>
+        <div class="step glass-card">
+          <span class="step-num">03</span>
+          <span class="badge badge-free step-badge">FREE</span>
+          <h3>You review and decide</h3>
+          <p>We demo it to you and your team. If it doesn't fit — no hard feelings. The prototype joins our ready-made solutions library. That's valuable for us too.</p>
+        </div>
+        <div class="step glass-card">
+          <span class="step-num">04</span>
+          <span class="badge step-badge step-badge-paid">PAID</span>
+          <h3>Final build, setup & handover</h3>
+          <p>We agree on scope, price, and timeline. We finish the system, train your team, connect everything. 30 days of post-launch support included.</p>
+        </div>
+      </div>
+      <blockquote class="how-quote reveal">
+        <p>"If you see the prototype and decide it's not for you — that's completely fine. We actually benefit from building prototypes because they grow our ready-made solutions library. So send us your tasks. Seriously."</p>
+      </blockquote>
     </section>
 
     <section id="cases" class="cases-section" aria-labelledby="cases-heading">
@@ -102,73 +180,262 @@
           <p>Predictive smoothing, reduced latency</p>
         </div>
       </div>
+      <div class="notable-projects reveal">
+        <h3>Other Notable Projects</h3>
+        <details class="notable-details">
+          <summary>View full list</summary>
+          <ul class="notable-list">
+            <li>AMC Networks — ML content placement timing model</li>
+            <li>Medical FHIR Platform — healthcare data ingestion and exchange</li>
+            <li>Inkhub — AI summarization from 5M+ sources</li>
+            <li>KNOX — IPFS distributed storage</li>
+            <li>ERP System — manufacturing inventory and production planning</li>
+            <li>Photoseparator IoT — real-time impurity detection on production lines</li>
+            <li>Anti-Counterfeit AI — brand authenticity recognition</li>
+            <li>ShuttleDelivery.co.kr — food delivery app (React / Node.js / Java)</li>
+            <li>IoT Healthcare Apps — diagnosis and pregnancy monitoring</li>
+            <li>10+ Corporate Websites (rplaza.by, mastera-zamkoff.ru, bulbashcompany.com, brs.by, comforthotel.by, gik.by, elporta.by, life-coaching.by, saryarka.by)</li>
+          </ul>
+        </details>
+      </div>
     </section>
 
     <section id="what-we-build" aria-labelledby="build-heading">
       <p class="section-tag reveal">// what we build</p>
       <h2 id="build-heading" class="reveal">Three ways we can help</h2>
-      <div class="bento-grid reveal-stagger"></div>
+      <div class="bento-grid reveal-stagger">
+        <div class="bento-card bento-featured glass-card">
+          <h3>Custom Development</h3>
+          <p>We build from scratch what doesn't exist on the market. Designed around your logic, your processes, your integrations. We architect it — no blind AI generation.</p>
+        </div>
+        <div class="bento-card bento-card1 glass-card">
+          <h3>Adapt Existing Platforms</h3>
+          <ul class="bento-list">
+            <li>CRM: Zoho CRM, Odoo, AmoCRM, Bitrix24</li>
+            <li>Payments: Stripe, PayPal, Crypto</li>
+            <li>Messaging: Telegram bots, WhatsApp Business API</li>
+            <li>Analytics: Google Sheets, Metabase, Power BI</li>
+          </ul>
+        </div>
+        <div class="bento-card bento-card2 glass-card">
+          <h3>Ready-Made Solutions</h3>
+          <p>50+ tools already built. Buy as-is or with light adaptation — faster and cheaper than custom.</p>
+          <a href="/solutions" class="btn-secondary">Browse Solutions →</a>
+        </div>
+        <div class="bento-card bento-card3 glass-card">
+          <h3>Integrations</h3>
+          <p>Connect your existing tools. Make them talk to each other. Eliminate manual data transfer.</p>
+        </div>
+      </div>
     </section>
 
     <section id="solutions-preview" aria-labelledby="solutions-heading">
       <p class="section-tag reveal">// ready to ship</p>
       <h2 id="solutions-heading" class="reveal">Already built — take it and use it</h2>
-      <div class="solutions-grid reveal-stagger"></div>
+      <p class="solutions-subheadline reveal">Every solution is a real shipped project, tested in production. Buy as-is or adapt — significantly cheaper than custom development.</p>
+      <div class="solutions-grid reveal-stagger">
+        <div class="solution-card glass-card">
+          <span class="solution-icon">🤖</span>
+          <h3>AI Sales Agent</h3>
+          <p>Lead qualification, Q&A, CRM push. 24/7.</p>
+          <span class="solution-price">from $300</span>
+        </div>
+        <div class="solution-card glass-card">
+          <span class="solution-icon">📦</span>
+          <h3>CRM for CIS Delivery</h3>
+          <p>Document automation, tracking, courier integrations</p>
+          <span class="solution-price">$300 one-time</span>
+        </div>
+        <div class="solution-card glass-card">
+          <span class="solution-icon">📊</span>
+          <h3>Analytics Dashboard</h3>
+          <p>Revenue, clients, funnel — auto-updated</p>
+          <span class="solution-price">from $200</span>
+        </div>
+        <div class="solution-card glass-card">
+          <span class="solution-icon">🤝</span>
+          <h3>Telegram Intake Bot</h3>
+          <p>Receives requests, routes to managers, logs to CRM</p>
+          <span class="solution-price">from $150</span>
+        </div>
+      </div>
+      <p class="solutions-cta reveal"><a href="/solutions" class="btn-primary">View All Solutions →</a></p>
     </section>
 
     <section id="team" aria-labelledby="team-heading">
       <p class="section-tag reveal">// the team</p>
       <h2 id="team-heading" class="reveal">Who's behind this</h2>
-      <div class="team-grid reveal-stagger"></div>
+      <div class="team-grid reveal-stagger">
+        <div class="team-card glass-card">
+          <h3>Nikita Volkunovich</h3>
+          <p class="team-role">Founder & CTO</p>
+          <p>11+ years as CTO and tech lead. 20,000+ hours of real development. Built projects from corporate websites to distributed ML platforms. Deep cross-domain expertise.</p>
+          <p class="team-key">Key work: McDonald's Analytics, Huawei Video ML, FHIR Medical Platform, ERP systems, AI Sales Agents.</p>
+        </div>
+        <div class="team-card glass-card">
+          <h3>Vitaly</h3>
+          <p class="team-role">Full Stack Developer</p>
+          <p>5 years of development at outsourcing companies. Frontend and backend. Delivers fast and clean.</p>
+        </div>
+        <div class="team-card glass-card">
+          <h3>Julia</h3>
+          <p class="team-role">Business Analyst & Designer</p>
+          <p>Translates business requirements into technical specs. Designs user flows and interfaces.</p>
+        </div>
+        <div class="team-card glass-card">
+          <h3>UX Partner Team</h3>
+          <p class="team-role">Dedicated UX design partners</p>
+          <p>Brought in on projects that need them.</p>
+        </div>
+      </div>
     </section>
 
     <section id="offer" aria-labelledby="offer-heading">
       <p class="section-tag reveal">// our promise</p>
       <h2 id="offer-heading" class="reveal">Try it risk-free — first prototype is on us</h2>
-      <div class="offer-content"></div>
+      <div class="offer-content">
+        <p class="offer-body reveal">Tell us your task. We'll build a working prototype and show you how it works — no upfront payment. If it fits, we'll agree on the full build. If not — you lose nothing. We gain another solution for our library.</p>
+        <div class="offer-tiles reveal-stagger">
+          <div class="offer-tile glass-card">
+            <span class="offer-tile-icon">🔒</span>
+            <h4>No upfront payment</h4>
+            <p>We don't invoice until you've seen it and said yes</p>
+          </div>
+          <div class="offer-tile glass-card">
+            <span class="offer-tile-icon">⚡</span>
+            <h4>Prototype in 7–14 days</h4>
+            <p>Working version, testable with real data</p>
+          </div>
+          <div class="offer-tile glass-card">
+            <span class="offer-tile-icon">💬</span>
+            <h4>30 days support included</h4>
+            <p>Post-launch fixes, questions, and training</p>
+          </div>
+        </div>
+        <div class="offer-scarcity reveal">
+          <span class="scarcity-dot"></span>
+          <p>🔥 Only 1 spot available this month (March 2026). New projects start from April. <a href="#contact" class="btn-primary">Apply now</a></p>
+        </div>
+      </div>
     </section>
 
     <section id="comparison" aria-labelledby="comparison-heading">
       <h2 id="comparison-heading" class="reveal">Baztit Tech vs Traditional Agencies</h2>
-      <div class="comparison-table"></div>
+      <div class="comparison-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="col-us">✦ Baztit Tech</th>
+              <th class="col-them">Agencies & Studios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cost</td>
+              <td class="col-us">$300 – $1,000</td>
+              <td class="col-them">$5,000 – $50,000+</td>
+            </tr>
+            <tr>
+              <td>Upfront payment</td>
+              <td class="col-us">None. Prototype first.</td>
+              <td class="col-them"><span class="strike">50% deposit upfront</span></td>
+            </tr>
+            <tr>
+              <td>Time to first result</td>
+              <td class="col-us">7–14 days to prototype</td>
+              <td class="col-them"><span class="strike">2–6 months</span></td>
+            </tr>
+            <tr>
+              <td>Risk</td>
+              <td class="col-us">Zero — pay after seeing it</td>
+              <td class="col-them"><span class="strike">High — pay before results</span></td>
+            </tr>
+            <tr>
+              <td>Fit</td>
+              <td class="col-us">Built around your process</td>
+              <td class="col-them"><span class="strike">Template solutions</span></td>
+            </tr>
+            <tr>
+              <td>Communication</td>
+              <td class="col-us">Direct: Telegram/WhatsApp</td>
+              <td class="col-them"><span class="strike">Manager chain</span></td>
+            </tr>
+            <tr>
+              <td>AI expertise</td>
+              <td class="col-us">10+ years IT + AI as accelerator</td>
+              <td class="col-them"><span class="strike">Often just AI, no engineering</span></td>
+            </tr>
+            <tr>
+              <td>Post-launch support</td>
+              <td class="col-us">30 days included</td>
+              <td class="col-them"><span class="strike">Separate support contract</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section id="contact" aria-labelledby="contact-heading">
       <p class="section-tag reveal">// let's talk</p>
       <h2 id="contact-heading" class="reveal">Tell us your task — we'll show you the prototype</h2>
-      <form class="contact-form" action="#" method="POST" aria-label="Contact form">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Alex" required aria-required="true">
-        <label for="messenger">Telegram or WhatsApp</label>
-        <input type="text" id="messenger" name="contact" placeholder="@username or +1..." required aria-required="true">
-        <label for="business">Business type</label>
-        <select id="business" name="business">
-          <option value="">Select your industry...</option>
-          <option value="retail">Retail / E-commerce</option>
-          <option value="services">Services (salon, clinic, studio)</option>
-          <option value="construction">Construction / Renovation</option>
-          <option value="wholesale">Wholesale / Distribution</option>
-          <option value="food">Food & Delivery</option>
-          <option value="manufacturing">Manufacturing</option>
-          <option value="it">IT / Digital / Agency</option>
-          <option value="other">Other</option>
-        </select>
-        <label for="task">Describe your task</label>
-        <textarea id="task" name="task" rows="4" placeholder="E.g. we manually track orders in Excel and want it automated with notifications..." required aria-required="true"></textarea>
-        <button type="submit" class="btn-primary">Get My Free Prototype →</button>
+      <p class="contact-subheadline reveal">Leave a request. We'll respond within a few hours, clarify details, and show you a working solution in 7–14 days. No upfront payment.</p>
+      <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST" aria-label="Contact form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Alex" required aria-required="true" aria-invalid="false" aria-describedby="name-error">
+          <span id="name-error" class="form-error" role="alert"></span>
+        </div>
+        <div class="form-group">
+          <label for="messenger">Telegram or WhatsApp</label>
+          <input type="text" id="messenger" name="contact" placeholder="@username or +1..." required aria-required="true" aria-invalid="false" aria-describedby="messenger-error">
+          <span id="messenger-error" class="form-error" role="alert"></span>
+        </div>
+        <div class="form-group">
+          <label for="business">Business type</label>
+          <select id="business" name="business">
+            <option value="">Select your industry...</option>
+            <option value="retail">Retail / E-commerce</option>
+            <option value="services">Services (salon, clinic, studio)</option>
+            <option value="construction">Construction / Renovation</option>
+            <option value="wholesale">Wholesale / Distribution</option>
+            <option value="food">Food & Delivery</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="it">IT / Digital / Agency</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="task">Describe your task</label>
+          <textarea id="task" name="task" rows="4" placeholder="E.g. we manually track orders in Excel and want it automated with notifications..." required aria-required="true" aria-invalid="false" aria-describedby="task-error"></textarea>
+          <span id="task-error" class="form-error" role="alert"></span>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="form-submit">Get My Free Prototype →</button>
+          <p class="form-success" id="form-success" hidden>✓ Request sent! We'll reply today.</p>
+        </div>
       </form>
     </section>
   </main>
 
   <footer id="footer">
-    <p>Baztit Tech — Custom automation for growing businesses</p>
-    <p>Telegram: @volknick · WhatsApp: +375255092206 · Email: progprogect@gmail.com</p>
-    <nav aria-label="Footer navigation">
-      <a href="/">Home</a>
-      <a href="/solutions">Ready Solutions</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <p>© 2026 Baztit Tech · All rights reserved</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">Baztit Tech</a>
+        <p class="footer-tagline">Custom automation for growing businesses</p>
+      </div>
+      <div class="footer-contacts">
+        <a href="https://t.me/volknick" target="_blank" rel="noopener">Telegram: @volknick</a>
+        <a href="https://wa.me/375255092206" target="_blank" rel="noopener">WhatsApp: +375255092206</a>
+        <a href="mailto:progprogect@gmail.com">Email: progprogect@gmail.com</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/solutions">Ready Solutions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="footer-copy">© 2026 Baztit Tech · All rights reserved</p>
   </footer>
 
   <!-- Scripts: Three.js → three-scene → GSAP → ScrollTrigger → Lenis → main -->
