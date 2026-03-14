@@ -1,4 +1,36 @@
-/* Baztit Tech — Base styles (Phase 2 will expand) */
+/* Baztit Tech — Design System (Phase 2) */
+
+/* 2.1 CSS Variables */
+:root {
+  --bg-primary: #0C0C0E;
+  --bg-secondary: #111116;
+  --bg-tertiary: #18181F;
+  --bg-glass: rgba(255, 255, 255, 0.04);
+
+  --accent: #E8FF47;
+  --accent-dim: rgba(232, 255, 71, 0.15);
+  --accent2: #FF5C3A;
+  --accent3: #00E5FF;
+
+  --text-primary: #F0F0F6;
+  --text-muted: #7A7A8E;
+  --text-faint: #4A4A58;
+
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(232, 255, 71, 0.25);
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -11,8 +43,216 @@ html {
 
 body {
   font-family: 'Manrope', sans-serif;
-  background: #0C0C0E;
-  color: #F0F0F6;
+  font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.7;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Mobile-first: padding with safe-area for notched devices */
+header, main, footer {
+  padding-inline: max(var(--space-md), env(safe-area-inset-left, 0px)) max(var(--space-md), env(safe-area-inset-right, 0px));
+}
+
+main {
+  padding-block: var(--space-xl);
+}
+
+header, footer {
+  padding-block: var(--space-md);
+}
+
+/* Nav: flex-wrap for mobile, prevents overflow */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+/* iOS: 16px prevents zoom on input focus */
+input, select, textarea {
+  font-size: 16px;
+  font-family: inherit;
+}
+
+/* 2.2 Typography Scale */
+h1, h2, h3, h4 {
+  font-family: 'Unbounded', sans-serif;
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 88px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+h3 {
+  font-size: clamp(20px, 2.5vw, 28px);
+}
+
+h4 {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+}
+
+.section-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* 2.3 Base Components */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(232, 255, 71, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-glass);
+  border-color: var(--border-hover);
+}
+
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(232, 255, 71, 0.3);
+  transform: translateY(-6px);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+}
+
+.badge-free {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.badge-paid {
+  background: rgba(255, 92, 58, 0.2);
+  color: var(--accent2);
+}
+
+/* 2.4 Layout System */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+}
+
+.grid-2 {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-3 {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bento-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "featured featured"
+      "card1 card2"
+      "card3 card3";
+  }
+}
+
+/* 2.5 Focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Touch targets: min 44x44px for accessibility */
