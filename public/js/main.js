@@ -162,6 +162,102 @@
     });
   }
 
+  /* 5.4 Solutions Filter + 5.5 Modal */
+  const solutionsFilter = document.querySelector('#solutions-filter');
+  const solutionsCards = document.querySelector('.solutions-cards');
+  const solutionModal = document.getElementById('solution-modal');
+
+  if (solutionsFilter && solutionsCards) {
+    const pills = solutionsFilter.querySelectorAll('.filter-pill');
+    const cards = solutionsCards.querySelectorAll('.solution-catalog-card');
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        const category = pill.getAttribute('data-category');
+        pills.forEach(function (p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+
+        cards.forEach(function (card) {
+          const cardCat = card.getAttribute('data-category');
+          const match = category === 'all' || cardCat === category;
+          card.classList.toggle('is-hidden', !match);
+
+          if (match && typeof gsap !== 'undefined') {
+            gsap.fromTo(card, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' });
+          }
+        });
+      });
+    });
+  }
+
+  if (solutionModal) {
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const modalPrice = document.getElementById('modal-price');
+    const modalClose = solutionModal.querySelector('.modal-close');
+    const modalContent = solutionModal.querySelector('.modal-content');
+
+    function openModal(card) {
+      if (modalTitle) modalTitle.textContent = card.getAttribute('data-modal-title') || '';
+      if (modalBody) modalBody.innerHTML = card.getAttribute('data-modal-body') || '';
+      if (modalPrice) modalPrice.textContent = card.getAttribute('data-modal-price') || '';
+      solutionModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      if (modalClose) modalClose.focus();
+
+      var focusables = solutionModal.querySelectorAll('button, [href], input, select, textarea, a[href]');
+      var firstFocus = focusables[0];
+      var lastFocus = focusables[focusables.length - 1];
+
+      function handleKeydown(e) {
+        if (e.key === 'Escape') {
+          closeModal();
+          return;
+        }
+        if (e.key !== 'Tab') return;
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocus) {
+            e.preventDefault();
+            lastFocus.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocus) {
+            e.preventDefault();
+            firstFocus.focus();
+          }
+        }
+      }
+
+      solutionModal._keyHandler = handleKeydown;
+      document.addEventListener('keydown', handleKeydown);
+    }
+
+    function closeModal() {
+      solutionModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (solutionModal._keyHandler) {
+        document.removeEventListener('keydown', solutionModal._keyHandler);
+      }
+    }
+
+    document.querySelectorAll('.modal-trigger').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.solution-catalog-card');
+        if (card) openModal(card);
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+
+    solutionModal.addEventListener('click', function (e) {
+      if (e.target === solutionModal) closeModal();
+    });
+
+    if (modalContent) {
+      modalContent.addEventListener('click', function (e) { e.stopPropagation(); });
+    }
+  }
+
   if (reducedMotion) return;
 
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;

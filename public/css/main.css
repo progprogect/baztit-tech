@@ -1136,3 +1136,223 @@ body::before {
   color: var(--text-muted);
   font-size: 1rem;
 }
+
+/* Phase 5 — Solutions Page */
+#solutions-hero {
+  min-height: 50vh;
+  min-height: 50dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-xxl) var(--space-md);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, rgba(0, 229, 255, 0.03) 100%);
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #solutions-hero {
+    animation: gradientShift 15s ease infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+#solutions-hero h1 {
+  margin-bottom: var(--space-md);
+}
+
+#solutions-hero .hero-sub {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* Filter pills */
+#solutions-filter {
+  padding: var(--space-lg) 0;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.filter-pill {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.filter-pill:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.filter-pill.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Solutions cards grid */
+.solutions-cards {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .solutions-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .solutions-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.solution-catalog-card {
+  padding: var(--space-lg);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.solution-catalog-card.is-hidden {
+  display: none;
+}
+
+.solution-catalog-card .btn-secondary {
+  margin-top: var(--space-md);
+}
+
+.solution-catalog-card .card-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.solution-catalog-card .card-category {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent3);
+  margin-bottom: var(--space-sm);
+}
+
+.solution-catalog-card .card-price {
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: var(--space-sm);
+}
+
+/* Solutions CTA */
+#solutions-cta {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-md);
+}
+
+#solutions-cta h2 {
+  margin-bottom: var(--space-sm);
+}
+
+#solutions-cta p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(var(--space-lg), env(safe-area-inset-top)) max(var(--space-lg), env(safe-area-inset-right)) max(var(--space-lg), env(safe-area-inset-bottom)) max(var(--space-lg), env(safe-area-inset-left));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-xl);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-open .modal-content {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-content h3 {
+  padding-right: 44px;
+  margin-bottom: var(--space-md);
+}
+
+.modal-content .modal-body {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.modal-content .modal-body p {
+  margin-bottom: var(--space-md);
+}
+
+.modal-content .modal-price {
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: var(--space-lg);
+}

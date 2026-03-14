@@ -18,16 +18,21 @@
 <body>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
-  <header>
-    <nav aria-label="Main navigation">
-      <a href="/">Baztit Tech</a>
-      <a href="/#how-we-work">How We Work</a>
-      <a href="/#cases">Experience</a>
-      <a href="/#what-we-build">What We Build</a>
-      <a href="/solutions">Solutions</a>
-      <a href="/#team">Team</a>
-      <a href="/#contact">Contact</a>
-      <a href="/#contact" class="btn-primary">Get a Free Prototype</a>
+  <header id="header">
+    <nav aria-label="Main navigation" class="nav-inner">
+      <a href="/" class="nav-logo">Baztit Tech</a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu">
+        <a href="/#how-we-work">How We Work</a>
+        <a href="/#cases">Experience</a>
+        <a href="/#what-we-build">What We Build</a>
+        <a href="/solutions">Solutions</a>
+        <a href="/#team">Team</a>
+        <a href="/#contact">Contact</a>
+        <a href="/#contact" class="btn-primary">Get a Free Prototype</a>
+      </div>
     </nav>
   </header>
 
@@ -42,6 +47,7 @@
         <button type="button" class="filter-pill active" data-category="all">All</button>
         <button type="button" class="filter-pill" data-category="ai-agents">AI Agents</button>
         <button type="button" class="filter-pill" data-category="crm">CRM</button>
+        <button type="button" class="filter-pill" data-category="erp">ERP / Warehouse</button>
         <button type="button" class="filter-pill" data-category="analytics">Analytics</button>
         <button type="button" class="filter-pill" data-category="bots">Bots</button>
         <button type="button" class="filter-pill" data-category="integrations">Integrations</button>
@@ -50,7 +56,56 @@
 
     <section id="solutions-grid" aria-labelledby="solutions-grid-heading">
       <h2 id="solutions-grid-heading" class="sr-only">Solutions catalog</h2>
-      <div class="solutions-cards"></div>
+      <div class="solutions-cards">
+        <article class="solution-catalog-card glass-card" data-category="ai-agents" data-modal-title="AI Sales & Lead Qualification Agent" data-modal-body="<p>Automate communication with leads and candidates across sales, support, and recruiting.</p><p>Not a chatbot. A digital employee — understands free text, qualifies leads, pushes data to CRM, moves clients through the funnel. Works with product docs and images for accurate answers.</p><p>Live and stable in production. Response time: seconds. Manager workload reduced. Lost leads minimized — without adding headcount.</p><p><a href='https://progprogect.github.io/AI-Agents-CRM-LP' target='_blank' rel='noopener'>View case study →</a></p>" data-modal-price="from $300">
+          <span class="card-icon">🤖</span>
+          <span class="card-category">AI Agents</span>
+          <h3>AI Sales & Lead Qualification Agent</h3>
+          <p>Lead qualification, Q&A, CRM push. 24/7. A digital employee that understands free text and moves clients through the funnel.</p>
+          <span class="card-price">from $300</span>
+          <button type="button" class="btn-secondary modal-trigger">Learn More</button>
+        </article>
+        <article class="solution-catalog-card glass-card" data-category="crm" data-modal-title="CRM for Trade & Delivery (CIS)" data-modal-body="<p>Automate shipment processing, document generation and tracking for CIS logistics market.</p><p>Ready-made CRM tailored to CIS market. Auto-generates transport docs, tracks statuses, integrates with couriers.</p><p>Available for $300 one-time. No monthly fees.</p>" data-modal-price="$300 one-time">
+          <span class="card-icon">📦</span>
+          <span class="card-category">CRM</span>
+          <h3>CRM for Trade & Delivery (CIS)</h3>
+          <p>Document automation, tracking, courier integrations. Auto-generates transport docs, tracks statuses.</p>
+          <span class="card-price">$300 one-time</span>
+          <button type="button" class="btn-secondary modal-trigger">Learn More</button>
+        </article>
+        <article class="solution-catalog-card glass-card" data-category="erp" data-modal-title="Production & Warehouse Tracking System" data-modal-body="<p>Track product status through manufacturing — line load, warehouse movement, order reservation.</p><p>Full production and inventory system from scratch. Integrated with client's existing workflow.</p><p>Cost $2,000 · Delivered in 2 weeks · Competing quotes: $50,000+ · Savings: 96%</p>" data-modal-price="from $1,500">
+          <span class="card-icon">📋</span>
+          <span class="card-category">ERP / Warehouse</span>
+          <h3>Production & Warehouse Tracking System</h3>
+          <p>Full production and inventory system. Track line load, warehouse movement, order reservation.</p>
+          <span class="card-price">from $1,500</span>
+          <button type="button" class="btn-secondary modal-trigger">Learn More</button>
+        </article>
+        <article class="solution-catalog-card glass-card" data-category="analytics" data-modal-title="Auto Analytics Dashboard" data-modal-body="<p>Revenue, clients, funnel — auto-updated from your data sources.</p><p>Connect to CRM, spreadsheets, or APIs. Real-time dashboards without manual Excel work.</p>" data-modal-price="from $200">
+          <span class="card-icon">📊</span>
+          <span class="card-category">Analytics</span>
+          <h3>Auto Analytics Dashboard</h3>
+          <p>Revenue, clients, funnel — auto-updated. No manual Excel reports.</p>
+          <span class="card-price">from $200</span>
+          <button type="button" class="btn-secondary modal-trigger">Learn More</button>
+        </article>
+        <article class="solution-catalog-card glass-card" data-category="bots" data-modal-title="Telegram Intake Bot" data-modal-body="<p>Receives requests, routes to managers, logs to CRM.</p><p>24/7 intake via Telegram. Automatically categorizes and assigns. Integrates with your CRM.</p>" data-modal-price="from $150">
+          <span class="card-icon">🤝</span>
+          <span class="card-category">Bots</span>
+          <h3>Telegram Intake Bot</h3>
+          <p>Receives requests, routes to managers, logs to CRM. 24/7 intake via Telegram.</p>
+          <span class="card-price">from $150</span>
+          <button type="button" class="btn-secondary modal-trigger">Learn More</button>
+        </article>
+        <article class="solution-catalog-card glass-card" data-category="integrations" data-modal-title="CRM + Messenger Integration" data-modal-body="<p>Connect your CRM with Telegram, WhatsApp, or other messengers.</p><p>Two-way sync. Messages from clients appear in CRM. CRM updates push to messengers. No manual copy-paste.</p>" data-modal-price="from $200">
+          <span class="card-icon">🔌</span>
+          <span class="card-category">Integrations</span>
+          <h3>CRM + Messenger Integration</h3>
+          <p>Connect CRM with Telegram, WhatsApp. Two-way sync, no manual copy-paste.</p>
+          <span class="card-price">from $200</span>
+          <button type="button" class="btn-secondary modal-trigger">Learn More</button>
+        </article>
+      </div>
     </section>
 
     <section id="solutions-cta" aria-label="Custom build CTA">
@@ -60,15 +115,33 @@
     </section>
   </main>
 
+  <div class="modal-overlay" id="solution-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+    <div class="modal-content">
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+      <h3 id="modal-title"></h3>
+      <div id="modal-body" class="modal-body"></div>
+      <p class="modal-price" id="modal-price"></p>
+    </div>
+  </div>
+
   <footer id="footer">
-    <p>Baztit Tech — Custom automation for growing businesses</p>
-    <p>Telegram: @volknick · WhatsApp: +375255092206 · Email: progprogect@gmail.com</p>
-    <nav aria-label="Footer navigation">
-      <a href="/">Home</a>
-      <a href="/solutions">Ready Solutions</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-    <p>© 2026 Baztit Tech · All rights reserved</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">Baztit Tech</a>
+        <p class="footer-tagline">Custom automation for growing businesses</p>
+      </div>
+      <div class="footer-contacts">
+        <a href="https://t.me/volknick" target="_blank" rel="noopener">Telegram: @volknick</a>
+        <a href="https://wa.me/375255092206" target="_blank" rel="noopener">WhatsApp: +375255092206</a>
+        <a href="mailto:progprogect@gmail.com">Email: progprogect@gmail.com</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/solutions">Ready Solutions</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="footer-copy">© 2026 Baztit Tech · All rights reserved</p>
   </footer>
 
   <!-- Scripts -->
