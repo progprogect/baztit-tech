@@ -355,11 +355,8 @@
       duration: 0.9,
       ease: 'power3.out',
       stagger: 0.08,
-      delay: 0.3,
-      onComplete: startTypewriter
+      delay: 0.3
     });
-  } else if (document.querySelector('.hero-subheadline')) {
-    setTimeout(startTypewriter, 1500);
   }
 
   /* 3.5 Typewriter */

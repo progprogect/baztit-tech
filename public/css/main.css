@@ -60,7 +60,7 @@ main {
 }
 
 main > section {
-  margin-bottom: var(--space-xxl);
+  margin-bottom: var(--space-xl);
 }
 
 main > section:last-of-type {
@@ -102,6 +102,7 @@ header, footer {
   font-size: 1.1rem;
   color: var(--text-primary);
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .nav-toggle {
@@ -138,8 +139,15 @@ header, footer {
 .nav-menu {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   align-items: center;
+  margin-left: auto;
+}
+
+@media (min-width: 1024px) {
+  .nav-menu {
+    flex-wrap: nowrap;
+  }
 }
 
 @media (max-width: 767px) {
@@ -151,19 +159,23 @@ header, footer {
     width: 100%;
     flex-direction: column;
     padding-top: var(--space-md);
+    margin-left: 0;
   }
   .nav-menu.is-open {
     display: flex;
   }
+  .nav-menu a:not(.btn-primary) {
+    width: 100%;
+    padding: var(--space-md);
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-menu a:not(.btn-primary):last-of-type {
+    border-bottom: none;
+  }
 }
 
-/* Nav: flex-wrap for mobile, prevents overflow */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  align-items: center;
-}
+/* Nav: nav-inner is the flex container, avoid generic nav override */
 
 /* iOS: 16px prevents zoom on input focus */
 input, select, textarea {
@@ -177,14 +189,14 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: clamp(42px, 7vw, 88px);
+  font-size: clamp(36px, 6vw, 72px);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: clamp(24px, 3.5vw, 42px);
   font-weight: 900;
   line-height: 1.05;
 }
@@ -199,11 +211,12 @@ h4 {
 }
 
 .section-tag {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
+  opacity: 0.8;
 }
 
 /* 2.3 Base Components */
@@ -255,13 +268,29 @@ h4 {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+  padding: var(--space-md);
   transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(232, 255, 71, 0.3);
-  transform: translateY(-6px);
+}
+
+.bento-featured.glass-card:hover,
+.case-card.glass-card:first-child:hover {
+  transform: translateY(-2px);
+}
+
+.bento-featured.glass-card,
+.bento-card.glass-card,
+.pain-card.glass-card,
+.step.glass-card,
+.case-card.glass-card,
+.solution-card.glass-card,
+.team-card.glass-card,
+.offer-tile.glass-card {
+  padding: var(--space-lg);
 }
 
 .badge {
@@ -350,7 +379,7 @@ h4 {
 }
 
 .bento-card:hover {
-  transform: translateY(-6px);
+  transform: none;
 }
 
 .bento-card h3 {
@@ -546,9 +575,15 @@ h4 {
 }
 
 /* 4.12 Comparison Table */
+.comparison-subheading {
+  font-size: 1.2rem;
+  margin-top: var(--space-xxl);
+  margin-bottom: var(--space-md);
+}
+
 .comparison-wrap {
   overflow-x: auto;
-  margin-top: var(--space-xl);
+  margin-top: var(--space-md);
 }
 
 .comparison-table {
@@ -572,6 +607,7 @@ h4 {
 
 .comparison-table .col-us {
   color: var(--accent);
+  background: var(--accent-dim);
 }
 
 .comparison-table .col-them {
@@ -678,14 +714,20 @@ h4 {
 }
 
 .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: var(--space-xl);
   margin-bottom: var(--space-xl);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .footer-brand {
-  flex: 1 1 200px;
+  min-width: 0;
 }
 
 .footer-logo {
@@ -750,10 +792,26 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* Touch targets: min 44x44px for accessibility */
-a, button {
+/* Touch targets: min 44x44px for buttons/CTA; nav links use padding */
+.btn-primary, .btn-secondary, button:not(.nav-toggle) {
   min-height: 44px;
   min-width: 44px;
+}
+
+.nav-menu a:not(.btn-primary) {
+  padding: 10px 14px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:not(.btn-primary):hover {
+  color: var(--accent);
 }
 
 .sr-only {
@@ -778,8 +836,9 @@ a, button {
 
 /* Phase 3 — Hero layout */
 #hero {
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 85vh;
+  min-height: 85dvh;
+  max-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -876,8 +935,8 @@ a, button {
 }
 
 .case-card {
-  flex: 0 0 380px;
-  min-width: 380px;
+  flex: 0 0 320px;
+  min-width: 320px;
   padding: var(--space-lg);
 }
 
@@ -936,8 +995,8 @@ body::before {
 /* 3.11 Marquee ticker */
 #ticker.ticker-wrap {
   overflow: hidden;
-  background: var(--accent);
-  color: var(--bg-primary);
+  background: rgba(232, 255, 71, 0.12);
+  color: var(--text-muted);
   padding: var(--space-md) 0;
   margin-inline: calc(-1 * max(var(--space-md), env(safe-area-inset-left, 0px))) calc(-1 * max(var(--space-md), env(safe-area-inset-right, 0px)));
 }
@@ -998,7 +1057,8 @@ body::before {
   margin-bottom: var(--space-sm);
 }
 
-.pain-card p {
+.pain-card p,
+.glass-card p {
   font-size: 0.95em;
   color: var(--text-muted);
   line-height: 1.6;
