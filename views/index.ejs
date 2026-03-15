@@ -16,24 +16,7 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-  <header id="header">
-    <nav aria-label="Main navigation" class="nav-inner">
-      <a href="/" class="nav-logo">Baztit Tech</a>
-      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-menu">
-        <a href="#how-we-work">How We Work</a>
-        <a href="#cases">Cases</a>
-        <a href="#what-we-build">What We Build</a>
-        <a href="/solutions">Solutions</a>
-        <a href="#contact">Contact</a>
-        <a href="/quiz.html" class="btn-primary">Get a Free Prototype</a>
-      </div>
-    </nav>
-  </header>
+  <%- include('partials/header', { baseUrl: '' }) %>
 
   <main>
     <section id="hero" aria-label="Hero">
@@ -413,8 +396,7 @@
       <p class="section-tag reveal">// let's talk</p>
       <h2 id="contact-heading" class="reveal">Tell us your task — we'll show you the prototype</h2>
       <p class="contact-subheadline reveal">Leave a request. We'll respond within a few hours, clarify details, and show you a working solution in 7–14 days. No upfront payment.</p>
-      <!-- Formspree: Replace placeholder with your endpoint from formspree.io (Settings → Form Endpoint). Email: progprogect@gmail.com -->
-      <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST" aria-label="Contact form">
+      <form class="contact-form" action="/api/contact" method="POST" aria-label="Contact form">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Alex" required aria-required="true" aria-invalid="false" aria-describedby="name-error">
@@ -453,25 +435,7 @@
     </section>
   </main>
 
-  <footer id="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo">Baztit Tech</a>
-        <p class="footer-tagline">Custom automation for growing businesses</p>
-      </div>
-      <div class="footer-contacts">
-        <a href="https://t.me/volknick" target="_blank" rel="noopener">Telegram: @volknick</a>
-        <a href="https://wa.me/375255092206" target="_blank" rel="noopener">WhatsApp: +375255092206</a>
-        <a href="mailto:progprogect@gmail.com">Email: progprogect@gmail.com</a>
-      </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="/">Home</a>
-        <a href="/solutions">Ready Solutions</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-    <p class="footer-copy">© 2026 Baztit Tech · All rights reserved</p>
-  </footer>
+  <%- include('partials/footer', { contactHref: '#contact' }) %>
 
   <!-- Scripts: Three.js → three-scene → GSAP → ScrollTrigger → Lenis → main -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

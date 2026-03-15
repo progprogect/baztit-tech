@@ -167,10 +167,11 @@
 
       syncHiddenFields();
 
+      const body = new URLSearchParams(new FormData(form)).toString();
       fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
+        body: body,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' }
       })
         .then(function (res) {
           if (res.ok) {

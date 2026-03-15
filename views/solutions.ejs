@@ -16,25 +16,7 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-  <header id="header">
-    <nav aria-label="Main navigation" class="nav-inner">
-      <a href="/" class="nav-logo">Baztit Tech</a>
-      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-menu">
-        <a href="/#how-we-work">How We Work</a>
-        <a href="/#cases">Experience</a>
-        <a href="/#what-we-build">What We Build</a>
-        <a href="/solutions">Solutions</a>
-        <a href="/#team">Team</a>
-        <a href="/#contact">Contact</a>
-        <a href="/quiz.html" class="btn-primary">Get a Free Prototype</a>
-      </div>
-    </nav>
-  </header>
+  <%- include('partials/header', { baseUrl: '/' }) %>
 
   <main>
     <section id="solutions-hero" aria-label="Solutions hero">
@@ -124,25 +106,7 @@
     </div>
   </div>
 
-  <footer id="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo">Baztit Tech</a>
-        <p class="footer-tagline">Custom automation for growing businesses</p>
-      </div>
-      <div class="footer-contacts">
-        <a href="https://t.me/volknick" target="_blank" rel="noopener">Telegram: @volknick</a>
-        <a href="https://wa.me/375255092206" target="_blank" rel="noopener">WhatsApp: +375255092206</a>
-        <a href="mailto:progprogect@gmail.com">Email: progprogect@gmail.com</a>
-      </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="/">Home</a>
-        <a href="/solutions">Ready Solutions</a>
-        <a href="/#contact">Contact</a>
-      </nav>
-    </div>
-    <p class="footer-copy">© 2026 Baztit Tech · All rights reserved</p>
-  </footer>
+  <%- include('partials/footer', { contactHref: '/#contact' }) %>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

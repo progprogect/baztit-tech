@@ -110,10 +110,11 @@
         submitBtn.disabled = true;
       }
 
+      const body = new URLSearchParams(new FormData(contactForm)).toString();
       fetch(contactForm.action, {
         method: 'POST',
-        body: new FormData(contactForm),
-        headers: { Accept: 'application/json' }
+        body: body,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' }
       })
         .then(function (res) {
           if (res.ok) {
