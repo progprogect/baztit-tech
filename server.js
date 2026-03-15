@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,16 +14,19 @@ async function sendToTelegram(text) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) {
-    console.warn('TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set — skipping Telegram');
-    return;
+    throw new Error('TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set. Add them in Railway Variables.');
   }
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' })
+    body: JSON.stringify({ chat_id: String(chatId).trim(), text, parse_mode: 'HTML' })
   });
-  if (!res.ok) throw new Error('Telegram API error');
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    console.error('Telegram API error:', res.status, data);
+    throw new Error(data.description || 'Telegram API error');
+  }
 }
 
 app.post('/api/contact', async (req, res) => {
@@ -51,25 +53,16 @@ app.post('/api/quiz', async (req, res) => {
   }
 });
 
-app.get('/solutions', (req, res) => {
-  res.render('solutions');
-});
+app.get('/quiz.html', (req, res) => res.render('quiz'));
+app.get('/index.html', (req, res) => res.render('index'));
 
-app.get('/quiz', (req, res) => {
-  res.render('quiz');
-});
+app.get('/solutions', (req, res) => res.render('solutions'));
+app.get('/quiz', (req, res) => res.render('quiz'));
+app.get('/', (req, res) => res.render('index'));
 
-app.get('/quiz.html', (req, res) => {
-  res.render('quiz');
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('*', (req, res) => {
-  res.render('index');
-});
+app.get('*', (req, res) => res.render('index'));
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
