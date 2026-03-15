@@ -1044,12 +1044,21 @@ body::before {
 /* 3.12 Progress bars */
 .bar {
   margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .bar-label {
   display: block;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0;
   font-weight: 600;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
 }
 
 .bar-fill {
@@ -1060,10 +1069,20 @@ body::before {
   width: 0;
 }
 
+.bar-row .bar-fill {
+  flex: 1;
+  min-width: 0;
+}
+
 .bar-pct {
   font-size: 0.85em;
   color: var(--text-muted);
   margin-left: var(--space-sm);
+}
+
+.bar-row .bar-pct {
+  flex-shrink: 0;
+  margin-left: 0;
 }
 
 /* 4.4 Pain cards */
@@ -1094,6 +1113,10 @@ body::before {
 }
 
 /* 4.5 About */
+#about .about-content {
+  margin-top: var(--space-xl);
+}
+
 .about-text p {
   margin-bottom: var(--space-md);
 }
