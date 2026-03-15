@@ -428,7 +428,7 @@
       scrollTrigger: {
         trigger: casesSection,
         pin: true,
-        scrub: 1,
+        scrub: true,
         start: 'top top',
         end: function () { return '+' + (casesTrack.scrollWidth - window.innerWidth); }
       }

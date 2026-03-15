@@ -1058,7 +1058,7 @@ body::before {
 .bar-row {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .bar-fill {
@@ -1067,22 +1067,16 @@ body::before {
   background: var(--accent);
   border-radius: var(--radius-sm);
   width: 0;
-}
-
-.bar-row .bar-fill {
   flex: 1;
   min-width: 0;
+  align-self: center;
 }
 
 .bar-pct {
   font-size: 0.85em;
+  line-height: 1;
   color: var(--text-muted);
-  margin-left: var(--space-sm);
-}
-
-.bar-row .bar-pct {
   flex-shrink: 0;
-  margin-left: 0;
 }
 
 /* 4.4 Pain cards */
@@ -1126,8 +1120,23 @@ body::before {
   margin-top: var(--space-lg);
 }
 
-.about-differentiators li {
-  margin-bottom: var(--space-sm);
+.about-differentiators .diff-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-md) var(--space-xl);
+  align-items: start;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-differentiators .diff-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.diff-main {
   display: flex;
   gap: var(--space-sm);
   align-items: flex-start;
@@ -1135,6 +1144,20 @@ body::before {
 
 .diff-icon {
   flex-shrink: 0;
+}
+
+.about-differentiators .diff-desc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .about-differentiators .diff-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
 }
 
 .about-bars {
