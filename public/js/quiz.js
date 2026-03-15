@@ -1,12 +1,13 @@
 /**
  * Quiz — Find Your Automation Match
  * Step-by-step lead capture with Formspree
+ * Plain language, 4 questions + contacts, Other with free text
  */
 
 (function () {
   'use strict';
 
-  const TOTAL_STEPS = 6;
+  const TOTAL_STEPS = 5;
   const steps = document.querySelectorAll('.quiz-step');
   const backBtn = document.querySelector('.quiz-back');
   const nextBtn = document.querySelector('.quiz-next');
@@ -17,7 +18,7 @@
     industry: document.getElementById('quiz-industry'),
     pain: document.getElementById('quiz-pain'),
     timeline: document.getElementById('quiz-timeline'),
-    budget: document.getElementById('quiz-budget')
+    other: document.getElementById('quiz-other')
   };
 
   let currentStep = 1;
@@ -36,12 +37,28 @@
     document.querySelector('.quiz-progress').setAttribute('aria-valuenow', currentStep);
 
     backBtn.classList.toggle('is-visible', currentStep > 1);
-    nextBtn.style.display = (currentStep === 6) ? 'none' : '';
+    nextBtn.style.display = (currentStep === 5) ? 'none' : '';
     updateNextState();
 
-    if (currentStep === 6) {
+    toggleOtherInput(1, answers.goal === 'other');
+    toggleOtherInput(2, answers.industry === 'other');
+
+    if (currentStep === 5) {
       syncHiddenFields();
     }
+  }
+
+  function getOtherText() {
+    var text = '';
+    if (answers.goal === 'other') {
+      var inp1 = document.getElementById('quiz-other-input-1');
+      if (inp1) text = (text ? text + ' | ' : '') + inp1.value.trim();
+    }
+    if (answers.industry === 'other') {
+      var inp2 = document.getElementById('quiz-other-input-2');
+      if (inp2) text = (text ? text + ' | ' : '') + inp2.value.trim();
+    }
+    return text;
   }
 
   function syncHiddenFields() {
@@ -49,7 +66,16 @@
     if (hiddenFields.industry) hiddenFields.industry.value = answers.industry || '';
     if (hiddenFields.pain) hiddenFields.pain.value = answers.pain || '';
     if (hiddenFields.timeline) hiddenFields.timeline.value = answers.timeline || '';
-    if (hiddenFields.budget) hiddenFields.budget.value = answers.budget || '';
+    if (hiddenFields.other) hiddenFields.other.value = getOtherText();
+  }
+
+  function toggleOtherInput(stepNum, show) {
+    var wrap = document.getElementById('quiz-other-' + stepNum);
+    var inp = document.getElementById('quiz-other-input-' + stepNum);
+    if (wrap) {
+      wrap.hidden = !show;
+      if (inp && !show) inp.value = '';
+    }
   }
 
   function selectOption(btn, key) {
@@ -59,15 +85,19 @@
     });
     btn.classList.add('is-selected');
     answers[key] = btn.getAttribute('data-value');
+
+    var stepNum = parseInt(container.getAttribute('data-step'), 10);
+    var isOther = btn.classList.contains('quiz-option-other');
+    toggleOtherInput(stepNum, isOther);
   }
 
   steps.forEach(function (step) {
     const stepNum = parseInt(step.getAttribute('data-step'), 10);
     const options = step.querySelectorAll('.quiz-option[data-value]');
+    const keys = ['goal', 'industry', 'pain', 'timeline'];
 
     options.forEach(function (opt) {
       opt.addEventListener('click', function () {
-        const keys = ['goal', 'industry', 'pain', 'timeline', 'budget'];
         const key = keys[stepNum - 1];
         if (key) {
           selectOption(opt, key);
@@ -84,8 +114,8 @@
   }
 
   function canProceed() {
-    if (currentStep === 6) return true;
-    const keys = ['goal', 'industry', 'pain', 'timeline', 'budget'];
+    if (currentStep === 5) return true;
+    const keys = ['goal', 'industry', 'pain', 'timeline'];
     return !!answers[keys[currentStep - 1]];
   }
 
@@ -134,6 +164,8 @@
         submitBtn.classList.add('is-loading');
         submitBtn.disabled = true;
       }
+
+      syncHiddenFields();
 
       fetch(form.action, {
         method: 'POST',

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Find your perfect automation match. Answer 5 questions — we'll recommend the best fit and show you a free prototype.">
+  <meta name="description" content="Find your perfect automation match. Answer 4 questions — we'll recommend the best fit and show you a free prototype.">
   <meta name="theme-color" content="#0C0C0E">
   <title>Find Your Automation Match — Baztit Tech</title>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,71 +19,66 @@
   </header>
 
   <main class="quiz-page">
-    <div class="quiz-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="6" aria-label="Quiz progress">
+    <div class="quiz-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5" aria-label="Quiz progress">
       <div class="quiz-progress-fill"></div>
     </div>
 
     <div class="quiz-container">
       <h1 class="quiz-title">Find Your Automation Match</h1>
-      <p class="quiz-sub">Answer 5 questions — we'll recommend the best fit and show you a prototype in 7–14 days.</p>
+      <p class="quiz-sub">Answer 4 questions — we'll recommend the best fit and show you a prototype in 7–14 days.</p>
 
       <div class="quiz-steps">
         <div class="quiz-step is-active" data-step="1">
-          <h2 class="quiz-question">What do you want to automate?</h2>
+          <h2 class="quiz-question">What do you spend the most time on manually?</h2>
           <div class="quiz-options">
-            <button type="button" class="quiz-option glass-card" data-value="crm">CRM & leads</button>
-            <button type="button" class="quiz-option glass-card" data-value="orders">Orders & inventory</button>
-            <button type="button" class="quiz-option glass-card" data-value="reports">Reports & dashboards</button>
-            <button type="button" class="quiz-option glass-card" data-value="integrations">Integrations (connect tools)</button>
-            <button type="button" class="quiz-option glass-card" data-value="custom">Custom workflow</button>
-            <button type="button" class="quiz-option glass-card" data-value="not-sure">Not sure yet</button>
+            <button type="button" class="quiz-option glass-card" data-value="sales">Sales & clients</button>
+            <button type="button" class="quiz-option glass-card" data-value="orders">Orders & stock</button>
+            <button type="button" class="quiz-option glass-card" data-value="reports">Reports & numbers</button>
+            <button type="button" class="quiz-option glass-card" data-value="connecting">Connecting my programs</button>
+            <button type="button" class="quiz-option glass-card quiz-option-other" data-value="other">Something else</button>
+          </div>
+          <div class="quiz-other-wrap" id="quiz-other-1" hidden>
+            <input type="text" class="quiz-other-input" id="quiz-other-input-1" placeholder="Describe in a few words, e.g. scheduling appointments" maxlength="200">
           </div>
         </div>
 
         <div class="quiz-step" data-step="2">
-          <h2 class="quiz-question">What's your industry?</h2>
+          <h2 class="quiz-question">What's your business?</h2>
           <div class="quiz-options">
-            <button type="button" class="quiz-option glass-card" data-value="retail">Retail / E-commerce</button>
-            <button type="button" class="quiz-option glass-card" data-value="services">Services (salon, clinic)</button>
-            <button type="button" class="quiz-option glass-card" data-value="delivery">Delivery / Food</button>
-            <button type="button" class="quiz-option glass-card" data-value="manufacturing">Manufacturing</button>
-            <button type="button" class="quiz-option glass-card" data-value="it">IT / Agency</button>
-            <button type="button" class="quiz-option glass-card" data-value="other">Other</button>
+            <button type="button" class="quiz-option glass-card" data-value="shop">Shop / Online store</button>
+            <button type="button" class="quiz-option glass-card" data-value="salon">Salon / Clinic / Studio</button>
+            <button type="button" class="quiz-option glass-card" data-value="delivery">Delivery / Catering</button>
+            <button type="button" class="quiz-option glass-card" data-value="production">Production / Warehouse</button>
+            <button type="button" class="quiz-option glass-card" data-value="office">Office / Agency</button>
+            <button type="button" class="quiz-option glass-card quiz-option-other" data-value="other">Other</button>
+          </div>
+          <div class="quiz-other-wrap" id="quiz-other-2" hidden>
+            <input type="text" class="quiz-other-input" id="quiz-other-input-2" placeholder="Describe in a few words" maxlength="200">
           </div>
         </div>
 
         <div class="quiz-step" data-step="3">
-          <h2 class="quiz-question">What's your biggest pain?</h2>
+          <h2 class="quiz-question">What bothers you most?</h2>
           <div class="quiz-options">
-            <button type="button" class="quiz-option glass-card" data-value="manual">Manual data entry</button>
-            <button type="button" class="quiz-option glass-card" data-value="systems">Systems don't talk</button>
-            <button type="button" class="quiz-option glass-card" data-value="no-tool">No right tool exists</button>
-            <button type="button" class="quiz-option glass-card" data-value="agencies">Agencies too expensive</button>
-            <button type="button" class="quiz-option glass-card" data-value="ai-failed">Tried AI — failed</button>
+            <button type="button" class="quiz-option glass-card" data-value="copy-paste">Too much copy-paste</button>
+            <button type="button" class="quiz-option glass-card" data-value="programs">Programs don't work together</button>
+            <button type="button" class="quiz-option glass-card" data-value="no-tool">Can't find the right tool</button>
+            <button type="button" class="quiz-option glass-card" data-value="quoted">Was quoted too much</button>
+            <button type="button" class="quiz-option glass-card" data-value="automation-failed">Tried automation — didn't work</button>
           </div>
         </div>
 
         <div class="quiz-step" data-step="4">
-          <h2 class="quiz-question">Timeline?</h2>
+          <h2 class="quiz-question">When do you need it?</h2>
           <div class="quiz-options">
-            <button type="button" class="quiz-option glass-card" data-value="asap">ASAP (this week)</button>
-            <button type="button" class="quiz-option glass-card" data-value="1-2-weeks">1–2 weeks</button>
-            <button type="button" class="quiz-option glass-card" data-value="1-month">1 month</button>
-            <button type="button" class="quiz-option glass-card" data-value="exploring">Just exploring</button>
+            <button type="button" class="quiz-option glass-card" data-value="this-week">This week</button>
+            <button type="button" class="quiz-option glass-card" data-value="1-2-weeks">In 1–2 weeks</button>
+            <button type="button" class="quiz-option glass-card" data-value="1-month">In a month</button>
+            <button type="button" class="quiz-option glass-card" data-value="exploring">Just looking</button>
           </div>
         </div>
 
-        <div class="quiz-step" data-step="5">
-          <h2 class="quiz-question">Budget range?</h2>
-          <div class="quiz-options">
-            <button type="button" class="quiz-option glass-card" data-value="under-500">Under $500</button>
-            <button type="button" class="quiz-option glass-card" data-value="500-1000">$500–1,000</button>
-            <button type="button" class="quiz-option glass-card" data-value="1000-3000">$1,000–3,000</button>
-            <button type="button" class="quiz-option glass-card" data-value="quote">Need a quote</button>
-          </div>
-        </div>
-
-        <div class="quiz-step quiz-lead" data-step="6">
+        <div class="quiz-step quiz-lead" data-step="5">
           <h2 class="quiz-question">Almost there — your contacts</h2>
           <p class="quiz-lead-sub">We'll reach out within a few hours with a personalized recommendation and next steps.</p>
           <form class="quiz-form" action="https://formspree.io/f/placeholder" method="POST" aria-label="Contact form">
@@ -92,7 +87,7 @@
             <input type="hidden" name="quiz_industry" id="quiz-industry">
             <input type="hidden" name="quiz_pain" id="quiz-pain">
             <input type="hidden" name="quiz_timeline" id="quiz-timeline">
-            <input type="hidden" name="quiz_budget" id="quiz-budget">
+            <input type="hidden" name="quiz_other" id="quiz-other">
             <div class="form-group">
               <label for="quiz-name">Name</label>
               <input type="text" id="quiz-name" name="name" placeholder="Alex" required>
@@ -102,6 +97,10 @@
               <label for="quiz-contact">Telegram or WhatsApp</label>
               <input type="text" id="quiz-contact" name="contact" placeholder="@username or +1..." required>
               <span id="quiz-contact-error" class="form-error" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="quiz-description">Short description (optional)</label>
+              <textarea id="quiz-description" name="description" rows="3" placeholder="E.g. I need to automate booking and reminders for my salon"></textarea>
             </div>
             <div class="form-group">
               <label for="quiz-email">Email (optional)</label>
