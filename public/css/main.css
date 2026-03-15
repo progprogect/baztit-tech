@@ -38,7 +38,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -354,6 +354,10 @@ h4 {
   }
 }
 
+#what-we-build .bento-grid {
+  margin-top: var(--space-xl);
+}
+
 .bento-grid {
   display: grid;
   gap: var(--space-md);
@@ -459,6 +463,17 @@ h4 {
 }
 
 /* 4.10 Team */
+#team .team-intro {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+#team .team-grid {
+  margin-top: var(--space-lg);
+}
+
 .team-grid {
   display: grid;
   gap: var(--space-lg);
@@ -497,6 +512,30 @@ h4 {
   margin-top: var(--space-sm);
   font-size: 0.9em;
   color: var(--text-faint);
+}
+
+.team-card-with-photo {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.team-card-body {
+  min-width: 0;
+}
+
+.team-card-photo {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 479px) {
+  .team-card-with-photo {
+    flex-direction: column;
+  }
 }
 
 /* 4.11 Offer + Scarcity */
@@ -949,14 +988,19 @@ textarea:focus-visible {
 }
 
 /* 3.8 Case cards horizontal scroll */
-.cases-section {
-  overflow: hidden;
+.cases-scroll-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-inline: calc(-1 * max(var(--space-md), env(safe-area-inset-left, 0px))) calc(-1 * max(var(--space-md), env(safe-area-inset-right, 0px)));
+  padding-inline: max(var(--space-md), env(safe-area-inset-left, 0px)) max(var(--space-md), env(safe-area-inset-right, 0px));
+  -webkit-overflow-scrolling: touch;
 }
 
 .cases-track {
   display: flex;
   gap: var(--space-lg);
   padding: var(--space-lg) 0;
+  flex-wrap: nowrap;
 }
 
 .case-card {
@@ -966,8 +1010,14 @@ textarea:focus-visible {
 }
 
 @media (max-width: 767px) {
+  .cases-scroll-wrap {
+    overflow-x: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
   .cases-track {
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
   }
   .case-card {

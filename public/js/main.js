@@ -17,35 +17,14 @@
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  let lenis;
-  if (typeof Lenis !== 'undefined') {
-    lenis = new Lenis({
-      duration: 1.2,
-      easing: function (t) {
-        return Math.min(1, 1.001 - Math.pow(2, -10 * t));
-      }
-    });
-
-    if (typeof ScrollTrigger !== 'undefined') {
-      lenis.on('scroll', ScrollTrigger.update);
-    }
-
-    if (typeof gsap !== 'undefined') {
-      gsap.ticker.add(function (time) {
-        lenis.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
-    }
-  }
-
   function scrollToHash(e) {
     const link = e.target.closest ? e.target.closest('a') : e.target;
     if (link && link.getAttribute('href')?.startsWith('#')) {
       const id = link.getAttribute('href').slice(1);
       const el = document.getElementById(id);
-      if (el && lenis) {
+      if (el) {
         e.preventDefault();
-        lenis.scrollTo(el, { offset: 0 });
+        el.scrollIntoView({ block: 'start' });
       }
     }
   }
@@ -415,24 +394,6 @@
       }
       tick();
     }
-  }
-
-  /* 3.8 Horizontal Scroll */
-  const casesTrack = document.querySelector('.cases-track');
-  const casesSection = document.querySelector('.cases-section');
-  if (casesTrack && casesSection && casesTrack.children.length > 0 && window.innerWidth >= 768) {
-    const endX = -(casesTrack.scrollWidth - window.innerWidth + 96);
-    gsap.to(casesTrack, {
-      x: endX,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: casesSection,
-        pin: true,
-        scrub: true,
-        start: 'top top',
-        end: function () { return '+' + (casesTrack.scrollWidth - window.innerWidth); }
-      }
-    });
   }
 
   /* 3.12 Progress Bars */
