@@ -1067,6 +1067,10 @@ body::before {
 }
 
 /* 4.4 Pain cards */
+#pain .pain-grid {
+  margin-top: var(--space-xl);
+}
+
 .pain-card {
   padding: var(--space-lg);
 }
