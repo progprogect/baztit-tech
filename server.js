@@ -9,6 +9,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* Prevent caching of HTML pages — ensures users get fresh forms, not stale Formspree links */
+app.use((req, res, next) => {
+  if (['/', '/quiz', '/quiz.html', '/index.html', '/solutions'].includes(req.path)) {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  }
+  next();
+});
+
 /* Telegram: заявки приходят в бот. Нужны env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID */
 async function sendToTelegram(text) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
